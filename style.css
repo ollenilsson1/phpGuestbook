@@ -1,6 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 16px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
-  width: 100%;
-  background-color: whitesmoke;
+  width: 80%;
+  max-width: 1600px;
+  margin: auto;
+  background-color: #f7f7f7;
 }
 
 .wrapper {
@@ -9,16 +20,16 @@ body {
   width: 90%;
   height: 100%;
   background-color: thistle;
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
-  align-items: center;
 }
 
 .header {
   position: absolute;
   top: 0;
+  left: 0;
 }
 
 #entries {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
 }

@@ -11,18 +11,27 @@
 <body>
 <div class="wrapper">
 <h1 class="header">Guestbook</h1>
+
+
+
+<div class="form">
+<form method="POST" action="savePosts.php">
+<input type="text" placeholder="Your name..." name="name" /><br />
+<input type="text" placeholder="Your email adress.." name="email" /><br />
+<textarea name="message" placeholder="Message.."></textarea>
+<input type="submit" value="Post message!">
+</form>
+</div>
+
 <?php
 
 include('connect.php');
 
 $stm = $pdo->query("SELECT id, name, email, message FROM entries");
 
-//print_r($stm->fetch());
+//while loop för att skriva ut alla entries på sidan
 while ($row = $stm->fetch()){
-    /* echo $row['id'] . "<br />" 
-    . "Name: " . $row['name'] . "<br />"
-    . "Email: " . $row['email'] . "<br />" 
-    . "Message: " .  $row['message'] . "<br />"; */
+
 ?>
 
 
@@ -47,19 +56,10 @@ while ($row = $stm->fetch()){
 </tr>
 </table>
 
-
+<!-- stänger while loop -->
 <?php
 }
 ?>
-
-
-<form method="POST" action="savePosts.php">
-<input type="text" placeholder="Your name..." name="name" /><br />
-<input type="text" placeholder="Your email adress.." name="email" /><br />
-<textarea name="message" placeholder="Message.."></textarea>
-<input type="submit" value="Post message!">
-</form>
-
 
 </div>
 </body>
