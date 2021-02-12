@@ -1,0 +1,24 @@
+body {
+  width: 100%;
+  background-color: whitesmoke;
+}
+
+.wrapper {
+  margin: 0 auto;
+  position: relative;
+  width: 90%;
+  height: 100%;
+  background-color: thistle;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+}
+
+#entries {
+}
