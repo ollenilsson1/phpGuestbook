@@ -64,14 +64,8 @@ while($row = $query->fetch(PDO::FETCH_ASSOC))     // Fetch_assoc returnerar en a
         <table border="0">
             <tr>
             <td><input type="hidden" name="username" value="<?php echo $username;?>"></td>
-
-
             </tr>
-            
-            
             <tr> 
-
-
                 <td>Message</td>
                 <td><input type="text" name="message" value="<?php echo $message;?>"></td>
             </tr>

@@ -106,7 +106,7 @@ catch(PDOException $error)
                 <label>Username:</label>
                 <input type="text" name="regUsername" class="form-control">
                 <label>Password:</label>
-                <input type="text" name="regPassword" class="form-control">
+                <input type="password" name="regPassword" class="form-control">
                 <label>Email:</label>
                 <input type="text" name="regEmail" class="form-control">
                 <input type="submit" name="register" value="Register"> 
