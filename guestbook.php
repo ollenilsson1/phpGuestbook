@@ -16,8 +16,6 @@
 
 <div class="form">
 <form method="POST" action="savePosts.php">
-<input type="text" placeholder="Your name..." name="name" /><br />
-<input type="text" placeholder="Your email adress.." name="email" /><br />
 <textarea name="message" placeholder="Message.."></textarea>
 <input type="submit" value="Post message!">
 </form>
@@ -25,9 +23,25 @@
 
 <?php
 
-include('connect.php');
+session_start(); 
+$dsn = "mysql:host=localhost;dbname=login-system";
+$user = "root";
+$password = ""; 
+$pdo = new PDO($dsn, $user, $password);  
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
 
-$stm = $pdo->query("SELECT id, name, email, message FROM entries");
+if(isset($_SESSION["username"]))  
+{  
+    echo '<h3>Login Successful, Welcome - '.$_SESSION["username"].'</h3>';  
+    echo '<br /><a href="logout.php">Logout</a>';  
+}  
+else  
+{  
+    header("location:login.php");  
+} 
+
+
+$stm = $pdo->query("SELECT id, username, message FROM entries");
 
 //while loop för att skriva ut alla entries på sidan
 while ($row = $stm->fetch()){
@@ -40,18 +54,15 @@ while ($row = $stm->fetch()){
    <td><?php echo $row['id'];?></td>
 </tr>
 <tr>
-   <td><?php echo $row['name'];?></td>
-</tr>
-<tr>
-   <td><?php echo $row['email'];?></td>
+   <td><?php echo $row['username'];?></td>
 </tr>
 <tr>
    <td><?php echo $row['message'];?></td>
 </tr>
 <tr>
    <td>
-       <a href="edit.php?id=<?php echo $row['id']; ?>">Edit</a>
-       <a href="delete.php?id=<?php echo $row['id']; ?>">Delete</a>
+       <a href="editPost.php?id=<?php echo $row['id']; ?>">Edit</a>
+       <a href="deletePost.php?id=<?php echo $row['id']; ?>">Delete</a>
    </td>
 </tr>
 </table>

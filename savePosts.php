@@ -1,15 +1,18 @@
 <?php
+session_start(); 
+$dsn = "mysql:host=localhost;dbname=login-system";
+$user = "root";
+$password = "";
+$pdo = new PDO($dsn, $user, $password);  
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
 
-include('connect.php');
 
-$name = $_POST['name'];
-$email = $_POST['email'];
+$username = $_SESSION['username'];
 $message = $_POST['message'];
 
-$sql = "INSERT INTO entries (name, email, message) VALUES(:name_IN, :email_IN, :message_IN)";
+$sql = "INSERT INTO entries (username, message) VALUES(:username_IN, :message_IN)";
 $stm = $pdo->prepare($sql);
-$stm->bindParam(':name_IN', $name);
-$stm->bindParam(':email_IN', $email);
+$stm->bindParam(':username_IN', $username);
 $stm->bindParam(':message_IN', $message);
 
 if($stm->execute()) {
