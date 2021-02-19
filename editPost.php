@@ -14,7 +14,7 @@ if(isset($_POST['update'])){
     
     // Ta in alla värden från den raden som editknappen fanns på
     $id = $_POST['id'];
-    $name=$_POST['username'];
+    $username=$_POST['username'];
     $message=$_POST['message'];    
         
     // sql query och förbered för att köra
@@ -23,7 +23,7 @@ if(isset($_POST['update'])){
 
     // Gör om :id o.s.v till rätt så det inte går att hacka sig in   (kanske borde byte till :name_IN :email_IN o.s.v.)
     $query->bindparam(':id', $id);               
-    $query->bindparam(':username', $name);
+    $query->bindparam(':username', $username);
     $query->bindparam(':message', $message);
 
     //Kör query
@@ -62,7 +62,16 @@ while($row = $query->fetch(PDO::FETCH_ASSOC))     // Fetch_assoc returnerar en a
     <br/><br/>
     <form name="form1" method="post" action="editPost.php">
         <table border="0">
+            <tr>
+            <td><input type="hidden" name="username" value="<?php echo $username;?>"></td>
+
+
+            </tr>
+            
+            
             <tr> 
+
+
                 <td>Message</td>
                 <td><input type="text" name="message" value="<?php echo $message;?>"></td>
             </tr>
